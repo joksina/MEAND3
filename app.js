@@ -13,5 +13,13 @@ app.controller("MainController", ['$scope', function ($scope){
   $scope.addPost = function () {
     $scope.posts.push({title: $scope.title, upvotes: 0});
     $scope.title = '';
+    //prevent user from submiting a blank title
+    if(!$scope.title || $scope.title === '') {
+      return;
+    }
   };
+  //create a function that increments the upvotes
+  $scope.incrementUpvotes = function (post) {
+    post.upvotes += 1
+  }
 }]);
